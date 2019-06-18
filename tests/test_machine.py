@@ -10,6 +10,14 @@ class MachineTest(unittest.TestCase):
 
         self.assertEqual(machine.slots["A"].quantity, 3)
 
+    def test_can_refill_coins(self):
+        slots = [ Slot("A", "Chocolate Biscuits", 100) ]
+        machine = Machine(slots)
+        coins = {'NICKEL': 10, 'DIME': 10, 'QUARTER': 10, 'DOLLAR': 5 }
+        machine.refill_coins(coins)
+
+        self.assertEqual(machine.coins['QUARTER'], 10)
+
     def test_user_can_buy_item_b(self):
         slots = [ Slot("B", "Coca", 120) ]
         machine = Machine(slots)
